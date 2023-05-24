@@ -4,13 +4,41 @@
 }
 
 .theme {
-  color: black;
-  background-color: #d6c01e;
+  color: white;
+  background: radial-gradient(
+    at center top,
+    rgb(55, 65, 81),
+    rgb(17, 24, 39),
+    rgb(0, 0, 0)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .theme-alt {
   color: #d6c01e;
   background-color: black;
+  background-color: #03b5aa;
+  background-color: #037971;
+  background-color: #023436;
+  background-color: #00bfb3;
+  background-color: #049a8f;
+}
+
+@font-face {
+  font-family: "akira bold";
+  src: url(./fonts/Akira-Expanded/Akira\ Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "akira outline";
+  src: url(./fonts/Akira-Expanded/Akira\ Outline.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "akira super bold";
+  src: url(./fonts/Akira-Expanded/Akira\ Super\ Bold.ttf) format("truetype");
 }
 
 header {
@@ -21,30 +49,30 @@ header {
 
 header h1 {
   margin: 15px;
-  border: 2px solid black;
   font-size: 40px;
+  font-family: "akira super bold";
 }
 
 main {
-  border: 2px solid black;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
 }
 
-main button {
+button {
   margin: 20px;
   background: black;
   border: none;
   padding: 15px 20px;
   color: white;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
   position: relative;
   border-radius: 12px;
+  font-family: "akira bold";
 }
 
-main button::before {
+button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -54,18 +82,63 @@ main button::before {
   height: 100%;
   background: linear-gradient(
     45deg,
-    red,
-    blue,
-    deeppink,
-    blue,
-    red,
-    deeppink,
-    blue
+    rgb(29, 78, 216),
+    rgb(30, 64, 175),
+    rgb(17, 24, 39)
   );
   background-size: 800%;
-  border-radius: 10px;
-  filter: blur(8px);
   animation: glowing 20s linear infinite;
+  filter: blur(8px);
+  border-radius: 10px;
+}
+
+main > section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 80%;
+}
+
+main section article {
+  background: linear-gradient(to right, rgb(255, 228, 230), rgb(204, 251, 241));
+  border-radius: 12px;
+  margin: 5px;
+  padding: 10px;
+  width: 30%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  color: black;
+  background-size: 800%;
+  animation: glowing 20s linear infinite;
+}
+
+main section article h2 {
+  text-transform: uppercase;
+  font-family: "akira bold";
+  font-size: 15px;
+}
+
+main section article img {
+  border: 2px solid black;
+  border-radius: 12px;
+  margin: 0px;
+  max-width: 90%;
+  height: 200px;
+}
+
+main section article div {
+  margin: 0px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+main section article div p {
+  margin: 5px;
+  text-transform: uppercase;
+  font-family: "akira bold";
+  font-size: 10px;
 }
 
 @keyframes glowing {
@@ -80,47 +153,4 @@ main button::before {
   100% {
     background-position: 0 0;
   }
-}
-
-main section {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  width: 80%;
-}
-
-main section article {
-  border: 1px solid black;
-  margin: 5px;
-  padding: 10px;
-  width: 30%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
-main section article h2 {
-  border: 2px solid black;
-  margin: 0px;
-  text-transform: uppercase;
-}
-
-main section article img {
-  border: 2px solid black;
-  margin: 0px;
-  max-width: 90%;
-  height: 200px;
-}
-
-main section article div {
-  border: 2px solid black;
-  margin: 0px;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-}
-
-main section article div p {
-  margin: 0 10px;
-  text-transform: uppercase;
 }

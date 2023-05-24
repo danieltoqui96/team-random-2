@@ -81,6 +81,8 @@ const displayTeamInfo = (team) => {
 const pokemonInfo = ({ name, types, sprites }) => {
   const article = document.createElement("article");
 
+  article.classList.add("front-info");
+
   const nameElement = document.createElement("h2");
   nameElement.textContent = name;
   article.appendChild(nameElement);
