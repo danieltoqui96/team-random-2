@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.theme {
+  color: black;
+  background-color: #d6c01e;
+}
+
+.theme-alt {
+  color: #d6c01e;
+  background-color: black;
+}
