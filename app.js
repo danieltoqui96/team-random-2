@@ -91,11 +91,15 @@ const pokemonInfo = ({ name, types, sprites }) => {
   image.loading = "lazy"; // Agregar atributo lazy loading
   article.appendChild(image);
 
+  const div = document.createElement("div");
+
   types.forEach((type) => {
     const typesElement = document.createElement("p");
     typesElement.textContent = type;
-    article.appendChild(typesElement);
+    div.appendChild(typesElement);
   });
+
+  article.appendChild(div);
 
   return article;
 };
