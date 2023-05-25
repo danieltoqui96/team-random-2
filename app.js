@@ -78,30 +78,72 @@ const displayTeamInfo = (team) => {
 };
 
 // Función para mostrar la información del Pokémon
-const pokemonInfo = ({ name, types, sprites }) => {
+const pokemonInfo = ({ id, name, types, sprites, stats }) => {
+  // Creando card
   const article = document.createElement("article");
+  article.classList.add("card");
 
-  article.classList.add("front-info");
+  // Div frontal
+  const front = document.createElement("div");
+  front.classList.add("front");
 
   const nameElement = document.createElement("h2");
   nameElement.textContent = name;
-  article.appendChild(nameElement);
+  front.appendChild(nameElement);
 
-  const image = document.createElement("img");
-  image.src = sprites.other;
-  image.alt = name;
-  image.loading = "lazy"; // Agregar atributo lazy loading
-  article.appendChild(image);
+  const img = document.createElement("img");
+  img.src = sprites.other;
+  img.alt = name;
+  img.loading = "lazy";
+  front.appendChild(img);
 
-  const div = document.createElement("div");
-
+  const typesDiv = document.createElement("div");
   types.forEach((type) => {
-    const typesElement = document.createElement("p");
-    typesElement.textContent = type;
-    div.appendChild(typesElement);
+    const typeElement = document.createElement("h3");
+    typeElement.textContent = type;
+    typesDiv.appendChild(typeElement);
   });
+  front.appendChild(typesDiv);
 
-  article.appendChild(div);
+  article.appendChild(front);
+
+  // Div trasero
+  const back = document.createElement("div");
+  back.classList.add("back");
+
+  const idElement = document.createElement("h2");
+  idElement.textContent = `#${id}`;
+  back.appendChild(idElement);
+
+  const statsDiv = document.createElement("div");
+
+  const hp = document.createElement("h3");
+  hp.textContent = `hp ${stats.hp}`;
+  statsDiv.appendChild(hp);
+
+  const attack = document.createElement("h3");
+  attack.textContent = `attack ${stats.attack}`;
+  statsDiv.appendChild(attack);
+
+  const defense = document.createElement("h3");
+  defense.textContent = `defense ${stats.defense}`;
+  statsDiv.appendChild(defense);
+
+  const speAtt = document.createElement("h3");
+  speAtt.textContent = `speAtt ${stats.speAtt}`;
+  statsDiv.appendChild(speAtt);
+
+  const speDef = document.createElement("h3");
+  speDef.textContent = `speDef ${stats.speDef}`;
+  statsDiv.appendChild(speDef);
+
+  const speed = document.createElement("h3");
+  speed.textContent = `speed ${stats.speed}`;
+  statsDiv.appendChild(speed);
+
+  back.appendChild(statsDiv);
+
+  article.appendChild(back);
 
   return article;
 };
