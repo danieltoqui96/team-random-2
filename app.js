@@ -1,5 +1,5 @@
 // Variables
-const searchRandomTeam = document.getElementById("search-random-team");
+const buttonTeam = document.getElementById("button-team");
 const teamInfo = document.getElementById("team-info");
 
 // Funtions
@@ -160,4 +160,4 @@ const getRandomTeam = async () => {
   }
 };
 // Controllers
-searchRandomTeam.addEventListener("click", getRandomTeam);
+buttonTeam.addEventListener("click", getRandomTeam);
