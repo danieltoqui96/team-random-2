@@ -1,6 +1,6 @@
 // Variables
 const buttonTeam = document.getElementById("button-team");
-const teamInfo = document.getElementById("team-info");
+const teamSection = document.getElementById("team-section");
 
 // Funtions
 
@@ -68,12 +68,12 @@ const getRandomTeamData = async () => {
 };
 
 // Función para mostrar la información del Equipo Pokémon
-const displayTeamInfo = (team) => {
-  teamInfo.innerHTML = "";
+const displayTeamSection = (team) => {
+  teamSection.innerHTML = "";
 
   for (const pokemon of team) {
     const article = pokemonInfo(pokemon);
-    teamInfo.appendChild(article);
+    teamSection.appendChild(article);
   }
 };
 
@@ -151,12 +151,12 @@ const pokemonInfo = ({ id, name, types, sprites, stats }) => {
 // Función para obtener y mostrar el equipo Pokémon
 const getRandomTeam = async () => {
   try {
-    teamInfo.innerHTML = "<p>Cargando equipo Pokémon...</p>";
+    teamSection.innerHTML = "<p>Cargando equipo Pokémon...</p>";
 
     const team = await getRandomTeamData();
-    displayTeamInfo(team);
+    displayTeamSection(team);
   } catch (error) {
-    teamInfo.innerHTML = `<p>${error.message}</p>`;
+    teamSection.innerHTML = `<p>${error.message}</p>`;
   }
 };
 // Controllers
