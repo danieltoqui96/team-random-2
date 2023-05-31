@@ -77,74 +77,166 @@ const displayTeamSection = (team) => {
   }
 };
 
+// Función que retorna el header del pokemon
+const pokemonHeader = (id, name, types) => {
+  // id
+  const number = document.createElement("span");
+  number.textContent = `#${id}`;
+  // name
+  const nameElement = document.createElement("span");
+  nameElement.textContent = `${name}`;
+  // types
+  const div = document.createElement("div");
+  div.classList.add("pokemon-types");
+  types.forEach((type) => {
+    const image = document.createElement("img");
+    image.src = `/imgs/type/${type}.svg`;
+    image.alt = type;
+    div.appendChild(image);
+  });
+  // header
+  const header = document.createElement("div");
+  header.classList.add("pokemon-header");
+  header.appendChild(number);
+  header.appendChild(nameElement);
+  header.appendChild(div);
+  return header;
+};
+
+// Función que retorna el Stat del pokemon
+const pokemonStat = (stat, value, total) => {
+  const label = document.createElement("span");
+  label.classList.add("stat-label");
+  label.textContent = stat;
+
+  const barValue = document.createElement("div");
+  barValue.classList.add("stat-value");
+  barValue.style.width = total
+    ? `${(value / 680) * 100}%`
+    : `${(value / 260) * 100}%`;
+
+  const bar = document.createElement("div");
+  bar.classList.add("stat-bar");
+  bar.appendChild(barValue);
+
+  const display = document.createElement("span");
+  display.classList.add("stat-value-display");
+  display.textContent = value;
+
+  const container = document.createElement("div");
+  container.classList.add("stat-container");
+  container.appendChild(label);
+  container.appendChild(bar);
+  container.appendChild(display);
+  return container;
+};
+
+// Función que retorna el body del pokemon
+const pokemonBody = () => {
+  // image
+  const image = document.createElement("img");
+  image.src = `./imgs/Dragonite.svg`;
+  image.alt = `dragonite`;
+
+  const imageDiv = document.createElement("div");
+  imageDiv.classList.add("pokemon-image");
+  imageDiv.appendChild(image);
+
+  // stats
+  const stats = document.createElement("div");
+  stats.classList.add("pokemon-stats");
+  stats.appendChild(pokemonStat("PS", 91));
+  stats.appendChild(pokemonStat("Ataque", 134));
+  stats.appendChild(pokemonStat("Defensa", 95));
+  stats.appendChild(pokemonStat("At. esp", 100));
+  stats.appendChild(pokemonStat("Def. esp", 100));
+  stats.appendChild(pokemonStat("Velocidad", 100));
+  stats.appendChild(pokemonStat("Total", 600, true));
+
+  const body = document.createElement("div");
+  body.classList.add("pokemon-body");
+  body.appendChild(imageDiv);
+  body.appendChild(stats);
+  return body;
+};
+
+// Función que retorna los movimientos del pokemon
+const pokemonMove = (name) => {
+  const moveName = document.createElement("span");
+  moveName.textContent = name;
+
+  const type = document.createElement("img");
+  type.src = `/imgs/type/normal.svg`;
+  type.alt = "normal";
+
+  const category = document.createElement("img");
+  category.src = "./imgs/move/fisico.png";
+  category.alt = "fisico";
+
+  const move = document.createElement("div");
+  move.classList.add("pokemon-move");
+  move.appendChild(moveName);
+  move.appendChild(type);
+  move.appendChild(category);
+  return move;
+};
+
+// Función que retorna el footer del pokemon
+const pokemonFooter = () => {
+  // ability
+  const abilityLabel = document.createElement("span");
+  abilityLabel.textContent = "Habilidad:";
+
+  const abilityValue = document.createElement("span");
+  abilityValue.textContent = `Multiescamas`;
+
+  const ability = document.createElement("div");
+  ability.classList.add("pokemon-ability");
+  ability.appendChild(abilityLabel);
+  ability.appendChild(abilityValue);
+
+  // nature
+  const natureLabel = document.createElement("span");
+  natureLabel.textContent = "Naturaleza:";
+
+  const natureValue = document.createElement("span");
+  natureValue.textContent = `Fuerte`;
+
+  const nature = document.createElement("div");
+  nature.classList.add("pokemon-nature");
+  nature.appendChild(natureLabel);
+  nature.appendChild(natureValue);
+
+  // details
+  const details = document.createElement("div");
+  details.classList.add("pokemon-details");
+  details.appendChild(ability);
+  details.appendChild(nature);
+
+  // moves
+  const moves = document.createElement("div");
+  moves.classList.add("pokemon-moves");
+  moves.appendChild(pokemonMove("ultra puño"));
+  moves.appendChild(pokemonMove("danza dragon"));
+  moves.appendChild(pokemonMove("terremoto"));
+  moves.appendChild(pokemonMove("velocidad extrema"));
+
+  // footer
+  const footer = document.createElement("div");
+  footer.classList.add("pokemon-footer");
+  footer.appendChild(details);
+  footer.appendChild(moves);
+  return footer;
+};
+
 // Función para mostrar la información del Pokémon
 const pokemonInfo = ({ id, name, types, sprites, stats }) => {
-  // Creando card
+  // pokemon-card
   const article = document.createElement("article");
-  article.classList.add("card");
-
-  // Div frontal
-  const front = document.createElement("div");
-  front.classList.add("front");
-
-  const nameElement = document.createElement("h2");
-  nameElement.textContent = name;
-  front.appendChild(nameElement);
-
-  const img = document.createElement("img");
-  img.src = sprites.other;
-  img.alt = name;
-  img.loading = "lazy";
-  front.appendChild(img);
-
-  const typesDiv = document.createElement("div");
-  types.forEach((type) => {
-    const typeElement = document.createElement("h3");
-    typeElement.textContent = type;
-    typesDiv.appendChild(typeElement);
-  });
-  front.appendChild(typesDiv);
-
-  article.appendChild(front);
-
-  // Div trasero
-  const back = document.createElement("div");
-  back.classList.add("back");
-
-  const idElement = document.createElement("h2");
-  idElement.textContent = `#${id}`;
-  back.appendChild(idElement);
-
-  const statsDiv = document.createElement("div");
-
-  const hp = document.createElement("h3");
-  hp.textContent = `hp ${stats.hp}`;
-  statsDiv.appendChild(hp);
-
-  const attack = document.createElement("h3");
-  attack.textContent = `attack ${stats.attack}`;
-  statsDiv.appendChild(attack);
-
-  const defense = document.createElement("h3");
-  defense.textContent = `defense ${stats.defense}`;
-  statsDiv.appendChild(defense);
-
-  const speAtt = document.createElement("h3");
-  speAtt.textContent = `speAtt ${stats.speAtt}`;
-  statsDiv.appendChild(speAtt);
-
-  const speDef = document.createElement("h3");
-  speDef.textContent = `speDef ${stats.speDef}`;
-  statsDiv.appendChild(speDef);
-
-  const speed = document.createElement("h3");
-  speed.textContent = `speed ${stats.speed}`;
-  statsDiv.appendChild(speed);
-
-  back.appendChild(statsDiv);
-
-  article.appendChild(back);
-
+  article.classList.add("pokemon-card");
+  article.appendChild(pokemonHeader(id, name, types));
+  article.appendChild(pokemonBody());
+  article.appendChild(pokemonFooter());
   return article;
 };
 

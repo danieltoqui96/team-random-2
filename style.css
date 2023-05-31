@@ -6,7 +6,10 @@
 
 /* Estilos generales de la página */
 body {
-  background-color: black;
+  background: url(/imgs/cramorant.png);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
   color: white;
 }
 
@@ -38,14 +41,19 @@ section {
   justify-content: center;
 }
 
+.blurred-box {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  top: calc(50% - 175px);
+  left: calc(50% - 125px);
+  background: inherit;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
 /* Clases especificas */
 .pokemon-card {
-  background: radial-gradient(
-    at left center,
-    rgb(29, 78, 216),
-    rgb(30, 64, 175),
-    rgb(17, 24, 39)
-  );
   height: 250px;
   width: 400px;
   display: flex;
@@ -54,6 +62,11 @@ section {
   margin: 10px;
   padding: 3px;
   border-radius: 10px;
+  position: relative;
+  background: inherit;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Header */
@@ -138,8 +151,10 @@ section {
 }
 
 .stat-value {
-  background-color: chartreuse;
+  background: linear-gradient(rgb(255, 255, 255), chartreuse, chartreuse);
   height: 50%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   animation: barra-animada 3s;
 }
 
@@ -172,9 +187,10 @@ section {
 .pokemon-ability,
 .pokemon-nature {
   height: 100%;
-
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .pokemon-moves {
