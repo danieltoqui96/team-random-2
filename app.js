@@ -86,7 +86,7 @@ const getPokemon = async (number) => {
         data.abilities[Math.floor(Math.random() * data.abilities.length)]
           .ability.name,
       // ability: getAbility(data.abilities),
-      nature: natures[Math.floor(Math.random() * 25) + 1],
+      nature: natures[Math.floor(Math.random() * 25)],
       moves: getMoves(data.moves),
       shiny: sprite === "front_shiny" ? true : false,
     };
@@ -296,7 +296,6 @@ const pokemonMove = (move) => {
 };
 
 // Principal Funcion
-// Función para obtener y mostrar el equipo Pokémon
 const getRandomTeam = async () => {
   try {
     teamSection.innerHTML = "<p>Cargando equipo Pokémon...</p>";

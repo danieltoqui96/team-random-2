@@ -6,7 +6,7 @@
 
 /* Estilos generales de la página */
 body {
-  background: url(/imgs/cramorant.png);
+  background: url(/imgs/cramorant.jpg);
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
@@ -15,15 +15,7 @@ body {
 }
 
 header {
-  background: linear-gradient(
-    150deg,
-    rgb(255, 255, 255, 0.5),
-    rgb(0, 0, 0, 0.4),
-    rgb(0, 0, 0, 0.4),
-    rgb(0, 0, 0, 0.4),
-    rgb(0, 0, 0, 0.4),
-    rgb(255, 255, 255, 0.5)
-  );
+  background: rgb(0, 0, 0, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255);
 }
 
@@ -190,7 +182,7 @@ section {
 }
 
 .pokemon-details {
-  width: 35%;
+  width: 40%;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -201,10 +193,11 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  font-size: 90%;
 }
 
 .pokemon-moves {
-  width: 65%;
+  width: 60%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -214,6 +207,7 @@ section {
 .pokemon-moves span {
   width: 40%;
   text-align: center;
+  font-size: 90%;
 }
 
 .color1 {
@@ -270,3 +264,21 @@ section {
     background-position: 0% 50%;
   }
 }
+
+@media (max-width: 450px) {
+  .pokemon-card {
+    height: 220px;
+    width: 350px;
+    margin: 5px 1px;
+  }
+
+  button {
+    padding: 10px 24px;
+  }
+
+  h1 {
+    padding: 18px;
+  }
+}
+
+/* 400 250 */
