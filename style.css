@@ -11,15 +11,30 @@ body {
   background-attachment: fixed;
   background-size: cover;
   color: white;
+  font-family: serif;
 }
 
 header {
-  border: 1px solid black;
+  background: linear-gradient(
+    150deg,
+    rgb(0, 0, 0, 0.4),
+    rgb(0, 0, 0, 0.4),
+    rgb(0, 0, 0, 0.4),
+    rgb(255, 255, 255, 0.5),
+    rgb(0, 0, 0, 0.4),
+    rgb(0, 0, 0, 0.4),
+    rgb(0, 0, 0, 0.4)
+  );
+  background-size: 200% 200%;
+  animation: gradient-animation 18s ease infinite;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 h1 {
   text-align: center;
   padding: 20px;
+  text-transform: uppercase;
 }
 
 main {
@@ -104,6 +119,8 @@ section {
 .pokemon-header > span:nth-child(2) {
   width: 40%;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .pokemon-types {
@@ -249,4 +266,40 @@ section {
 }
 .color6 {
   background: linear-gradient(rgb(255, 255, 255), #33ffbd, #33ffbd);
+}
+
+.shiny {
+  box-shadow: 0 0 5px #3cf5e0;
+  background: radial-gradient(
+    at right center,
+    rgb(29, 78, 216, 0.8),
+    rgb(30, 64, 175, 0.8),
+    rgb(17, 24, 39, 0.8)
+  );
+  background-size: 200% 200%;
+  animation: gradient-animation 4s ease infinite;
+  color: white;
+}
+.shiny:hover {
+  box-shadow: 0 0 20px #3cf5e0;
+  background: radial-gradient(
+    at right center,
+    rgb(29, 78, 216, 0.8),
+    rgb(30, 64, 175, 0.8),
+    rgb(17, 24, 39, 0.8)
+  );
+  background-size: 200% 200%;
+  animation: gradient-animation 2s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

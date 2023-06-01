@@ -7,7 +7,12 @@ const teamSection = document.getElementById("team-section");
 const getRandomNumbers = (min, max, length) => {
   const numbers = new Set();
   while (numbers.size < length) {
-    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    if (length === 6 && randomNum === 386) {
+      const deoxys = [386, 10001, 10002, 10003];
+      const index = Math.floor(Math.random() * deoxys.length);
+      randomNum = deoxys[index];
+    }
     numbers.add(randomNum);
   }
   return Array.from(numbers);
@@ -46,7 +51,6 @@ const getMove = async (apiUrl) => {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    console.log(data.names);
     const move = {
       accuracy: data.accuracy,
       damage_class: data.damage_class.name,
@@ -80,6 +84,7 @@ const getMoves = async (arr) => {
 
 // Función para obtener un Pokémon dado un número
 const getPokemon = async (number) => {
+  const spriteType = Math.random() < 0.95 ? "front_default" : "front_shiny";
   try {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon/${number}`;
     const response = await fetch(apiUrl);
@@ -90,7 +95,7 @@ const getPokemon = async (number) => {
       types: data.types.map((type) => type.type.name),
       sprites: {
         other: data.sprites.other.dream_world.front_default,
-        home: data.sprites.other.home.front_default,
+        home: data.sprites.other.home[spriteType],
         official: data.sprites.other["official-artwork"].front_default,
       },
       stats: {
@@ -105,6 +110,7 @@ const getPokemon = async (number) => {
       ability: await getAbility(data.abilities),
       nature: await getNature(),
       moves: await getMoves(data.moves),
+      shiny: spriteType === "front_shiny" ? true : false,
     };
 
     return pokemon;
@@ -331,6 +337,7 @@ const pokemonInfo = ({
   ability,
   nature,
   moves,
+  shiny,
 }) => {
   // pokemon-card
   const article = document.createElement("article");
@@ -338,6 +345,7 @@ const pokemonInfo = ({
   article.appendChild(pokemonHeader(id, name, types));
   article.appendChild(pokemonBody(sprites, stats));
   article.appendChild(pokemonFooter(ability, nature, moves));
+  if (shiny) article.classList.add("shiny");
   return article;
 };
 
