@@ -1,0 +1,62 @@
+/* Reset de estilos para todos los elementos */
+* {
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+/* Estilos generales de la página */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+
+/* Estilos del contenedor principal */
+.pokemon-stats {
+  width: 600px;
+  background-color: cornflowerblue;
+}
+
+/* Estilos de cada estadística individual */
+.stat-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: burlywood;
+}
+
+/* Estilos de la etiqueta que describe la estadística */
+.stat-label {
+  width: 20%;
+  font-size: 15px;
+  background-color: crimson;
+}
+
+/* Estilos de la barra que muestra visualmente la estadística */
+.stat-bar {
+  width: 50%;
+  background-color: darkblue;
+}
+
+/* Estilos de la barra de progreso */
+.stat-value {
+  background: linear-gradient(to right, red, orange, yellow, green);
+  animation: barra-animada 3s;
+}
+
+/* Estilos del valor numérico de la estadística */
+.stat-value-display {
+  width: 10%;
+  font-size: 15px;
+  text-align: center;
+  background-color: darkorchid;
+}
+
+/* Animación de la barra de progreso */
+@keyframes barra-animada {
+  0% {
+    width: 0%;
+  }
+}

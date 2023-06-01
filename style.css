@@ -29,27 +29,35 @@ main {
 }
 
 button {
-  width: 60px;
-  height: 50px;
-  margin: 5px;
-  padding: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 8px;
+  /* transition-duration: 0.2s; */
+}
+
+button:hover {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255);
+  color: white;
+}
+
+button:active {
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
 }
 
 section {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-}
-
-.blurred-box {
-  position: relative;
-  width: 250px;
-  height: 350px;
-  top: calc(50% - 175px);
-  left: calc(50% - 125px);
-  background: inherit;
-  border-radius: 2px;
-  overflow: hidden;
 }
 
 /* Clases especificas */
@@ -67,6 +75,13 @@ section {
   overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.pokemon-card:hover {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255);
 }
 
 /* Header */
@@ -144,7 +159,6 @@ section {
 
 .stat-bar {
   width: 60%;
-
   height: 100%;
   display: flex;
   align-items: center;
@@ -218,17 +232,21 @@ section {
   padding: 2px;
 }
 
-/* main button {
-  color: #f5f5f5;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  background: #006666;
-  margin: 10px;
+.color1 {
+  background: linear-gradient(rgb(255, 255, 255), #ff5733, #ff5733);
 }
-
-main button:active {
-  box-shadow: inset 0px 0px 4px #fff;
-} */
+.color2 {
+  background: linear-gradient(rgb(255, 255, 255), #ffbd33, #ffbd33);
+}
+.color3 {
+  background: linear-gradient(rgb(255, 255, 255), #dbff33, #dbff33);
+}
+.color4 {
+  background: linear-gradient(rgb(255, 255, 255), #75ff33, #75ff33);
+}
+.color5 {
+  background: linear-gradient(rgb(255, 255, 255), #33ff57, #33ff57);
+}
+.color6 {
+  background: linear-gradient(rgb(255, 255, 255), #33ffbd, #33ffbd);
+}
