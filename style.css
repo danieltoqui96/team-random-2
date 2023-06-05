@@ -16,7 +16,7 @@ body {
 
 header {
   background: rgb(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
 }
 
 h1 {
@@ -33,8 +33,7 @@ main {
 
 button {
   background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: none;
   color: white;
   padding: 12px 28px;
   text-align: center;
@@ -42,12 +41,12 @@ button {
   font-size: 16px;
   margin: 10px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 button:active {
-  background: rgba(0, 0, 0, 0.8);
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px -1px 5px rgba(255, 255, 255, 0.432);
+  border: none;
 }
 
 section {
@@ -67,13 +66,7 @@ section {
   padding: 3px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.8);
-}
-
-.pokemon-card:hover {
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid rgba(255, 255, 255);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
 }
 
 /* Header */
@@ -157,8 +150,8 @@ section {
 
 .stat-value {
   height: 50%;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   animation: barra-animada 3s;
 }
 
@@ -179,6 +172,7 @@ section {
   display: flex;
   height: 30%;
   padding: 10px;
+  text-transform: capitalize;
 }
 
 .pokemon-details {
@@ -230,55 +224,78 @@ section {
 }
 
 .shiny {
-  box-shadow: 0 0 5px #3cf5e0;
-  background: radial-gradient(
-    at right center,
-    rgb(29, 78, 216, 0.8),
-    rgb(30, 64, 175, 0.8),
-    rgb(17, 24, 39, 0.8)
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    to right,
+    rgb(254, 240, 138, 0.8),
+    rgb(250, 204, 21),
+    rgb(161, 98, 7, 0.8)
   );
-  background-size: 200% 200%;
-  animation: gradient-animation 4s ease infinite;
-  color: white;
-}
-.shiny:hover {
-  box-shadow: 0 0 20px #3cf5e0;
-  background: radial-gradient(
-    at right center,
-    rgb(29, 78, 216, 0.8),
-    rgb(30, 64, 175, 0.8),
-    rgb(17, 24, 39, 0.8)
-  );
-  background-size: 200% 200%;
-  animation: gradient-animation 2s ease infinite;
+  background-size: 400% 400%;
+  animation: gradient-animation 6s ease infinite;
 }
 
 @keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
+    color: black;
   }
   50% {
     background-position: 100% 50%;
+    color: white;
   }
   100% {
     background-position: 0% 50%;
+    color: black;
+  }
+}
+
+.icon-shiny {
+  animation: shiny-icon-effect 6s ease infinite;
+}
+
+@keyframes shiny-icon-effect {
+  0% {
+    filter: invert(0%);
+  }
+  50% {
+    filter: invert(100%);
+  }
+  100% {
+    filter: invert(0%);
   }
 }
 
 @media (max-width: 450px) {
+  button {
+    padding: 10px 24px;
+  }
+  h1 {
+    padding: 18px;
+  }
   .pokemon-card {
     height: 220px;
     width: 350px;
     margin: 5px 1px;
   }
-
-  button {
-    padding: 10px 24px;
-  }
-
-  h1 {
-    padding: 18px;
-  }
 }
 
-/* 400 250 */
+.cramorant {
+  animation: show-and-hide 10s forwards infinite;
+  width: 80%;
+}
+
+@keyframes show-and-hide {
+  0% {
+    opacity: 0;
+    filter: brightness(0%);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(100%);
+  }
+  100% {
+    opacity: 0;
+    filter: brightness(0%);
+  }
+}

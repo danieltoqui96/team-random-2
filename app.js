@@ -133,7 +133,7 @@ const pokemonInfo = ({
   // pokemon-card
   const article = document.createElement("article");
   article.classList.add("pokemon-card");
-  article.appendChild(pokemonHeader(id, name, types));
+  article.appendChild(pokemonHeader(id, name, types, shiny));
   article.appendChild(pokemonBody(sprite, stats));
   article.appendChild(pokemonFooter(ability, nature, moves));
   if (shiny) article.classList.add("shiny");
@@ -141,7 +141,7 @@ const pokemonInfo = ({
 };
 
 // Función que retorna el header del pokemon
-const pokemonHeader = (id, name, types) => {
+const pokemonHeader = (id, name, types, shiny) => {
   const number = document.createElement("span");
   number.textContent = `#${id}`;
 
@@ -150,10 +150,15 @@ const pokemonHeader = (id, name, types) => {
 
   const div = document.createElement("div");
   div.classList.add("pokemon-types");
+  if (shiny) {
+    const imgShiny = document.createElement("img");
+    imgShiny.src = "./imgs/shiny.svg";
+    imgShiny.classList.add("icon-shiny");
+    div.appendChild(imgShiny);
+  }
   types.forEach((type) => {
     const image = document.createElement("img");
     image.src = `/imgs/type/${type}.svg`;
-    image.alt = type;
     div.appendChild(image);
   });
 
@@ -177,11 +182,11 @@ const pokemonBody = (sprite, stats) => {
   const statsElement = document.createElement("div");
   statsElement.classList.add("pokemon-stats");
   statsElement.appendChild(pokemonStat("PS", stats.hp));
-  statsElement.appendChild(pokemonStat("Ataque", stats.attack));
-  statsElement.appendChild(pokemonStat("Defensa", stats.defense));
-  statsElement.appendChild(pokemonStat("At. esp", stats.speAtt));
-  statsElement.appendChild(pokemonStat("Def. esp", stats.speDef));
-  statsElement.appendChild(pokemonStat("Velocidad", stats.speed));
+  statsElement.appendChild(pokemonStat("Att", stats.attack));
+  statsElement.appendChild(pokemonStat("Def", stats.defense));
+  statsElement.appendChild(pokemonStat("S. A", stats.speAtt));
+  statsElement.appendChild(pokemonStat("S. D", stats.speDef));
+  statsElement.appendChild(pokemonStat("Spe", stats.speed));
   statsElement.appendChild(pokemonStat("Total", stats.total, true));
 
   const body = document.createElement("div");
@@ -248,7 +253,7 @@ const colorChart = (value) => {
 // Función que retorna el footer del pokemon
 const pokemonFooter = (ability, nature, moves) => {
   const abilityLabel = document.createElement("span");
-  abilityLabel.textContent = "Ability:";
+  abilityLabel.textContent = "(A):";
 
   const abilityValue = document.createElement("span");
   abilityValue.textContent = ability;
@@ -259,7 +264,7 @@ const pokemonFooter = (ability, nature, moves) => {
   abilityDiv.appendChild(abilityValue);
 
   const natureLabel = document.createElement("span");
-  natureLabel.textContent = "Nature:";
+  natureLabel.textContent = "(N):";
 
   const natureValue = document.createElement("span");
   natureValue.textContent = nature;
