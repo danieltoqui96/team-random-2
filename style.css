@@ -5,35 +5,21 @@
 }
 
 /* Estilos generales de la página */
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   background: rgb(30, 64, 175);
-  background: linear-gradient(
-    to right,
-    rgb(29, 78, 216),
-    rgb(30, 64, 175),
-    rgb(17, 24, 39)
-  );
-  background-size: 500% 500%;
-  animation: color 12s ease-in-out infinite;
+  background: linear-gradient(to top, #009ab6, #263640);
+  background-attachment: fixed;
   color: white;
   font-family: serif;
 }
 
-@keyframes color {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-}
-
 header {
-  background: rgb(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  background: rgb(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -49,22 +35,31 @@ main {
 }
 
 button {
-  background: linear-gradient(to top, rgb(17, 24, 39), rgb(75, 85, 99));
+  background: linear-gradient(
+    to top,
+    rgba(75, 85, 99, 0.5),
+    rgb(17, 24, 39, 0.8) 20% 80%,
+    rgba(75, 85, 99, 0.5)
+  );
   border: none;
   color: white;
   padding: 12px 28px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 10px;
+  margin: 16px;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
 }
 
 button:active {
-  /* box-shadow: inset 0px -1px 5px rgba(255, 255, 255, 0.432); */
-  background: linear-gradient(to bottom, rgb(17, 24, 39), rgb(75, 85, 99));
+  background: linear-gradient(
+    to top,
+    rgba(75, 85, 99, 0.5),
+    rgb(17, 24, 39, 0.5) 10% 90%,
+    rgba(75, 85, 99, 0.5)
+  );
   border: none;
 }
 
@@ -134,7 +129,7 @@ section {
 
 .pokemon-image {
   height: 100%;
-  width: 40%;
+  width: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,29 +150,33 @@ section {
 }
 
 .stat-label {
-  width: 25%;
+  width: 35%;
   font-size: 80%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .stat-bar {
-  width: 60%;
+  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
 }
 
 .stat-value {
-  height: 50%;
+  height: 60%;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   animation: barra-animada 3s;
 }
 
 .stat-value-display {
-  width: 10%;
+  width: 15%;
   font-size: 80%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes barra-animada {
@@ -223,35 +222,38 @@ section {
   font-size: 90%;
 }
 
+.color1,
+.color2,
+.color3,
+.color4,
+.color5,
+.color6 {
+  animation: bar 10s linear infinite;
+}
+
 .color1 {
-  background: linear-gradient(to right, #ff0000, #ff4a12);
-  animation: bar 2s linear infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(45deg, #ff0000, #d00000, #ff4a12, #ff4a12);
+  background-size: 500% 500%;
 }
 .color2 {
-  background: linear-gradient(to right, #ff7c17, #ffac27);
-  animation: bar 2s linear infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(135deg, #ff9900, #d34300, #ffac27, #ffac27);
+  background-size: 500% 500%;
 }
 .color3 {
-  background: linear-gradient(to right, #ddd607, #e5ff00);
-  animation: bar 2s linear infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(270deg, #ccff00, #9ec600, #e5ff00, #e5ff00);
+  background-size: 500% 500%;
 }
 .color4 {
-  background: linear-gradient(to right, #5eff00, #00ff00);
-  animation: bar 2s linear infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(45deg, #5eff00, #00aa00, #00ff00, #00ff00);
+  background-size: 500% 500%;
 }
 .color5 {
-  background: linear-gradient(to right, #00eeff, #00aaff);
-  animation: bar 2s linear infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(135deg, #00eeff, #00a2ae, #00aaff, #00aaff);
+  background-size: 500% 500%;
 }
 .color6 {
-  background: linear-gradient(to right, #0059ff, #0000ff);
-  animation: bar 2s linear infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(270deg, #0059ff, #0000c2, #1111ff, #1111ff);
+  background-size: 500% 500%;
 }
 
 @keyframes bar {
@@ -323,22 +325,73 @@ section {
   }
 }
 
-.main-img {
-  animation: charizard 10s forwards infinite;
-  width: 40%;
-  margin: 100px;
+.container {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 400px;
+  height: 400px;
 }
 
-@keyframes charizard {
+.venusaur,
+.charizard,
+.blastoise {
+  position: absolute;
+  opacity: 0;
+}
+.venusaur {
+  animation: venusaur 20s forwards infinite;
+}
+@keyframes venusaur {
   0% {
     opacity: 0;
     filter: brightness(0%);
   }
-  50% {
+  15% {
     opacity: 1;
-    filter: brightness(100%);
+    filter: brightness(40%);
   }
-  100% {
+  30% {
+    opacity: 0;
+    filter: brightness(0%);
+  }
+}
+
+.charizard {
+  animation: charizard 20s forwards infinite;
+}
+
+@keyframes charizard {
+  30% {
+    opacity: 0;
+    filter: brightness(0%);
+  }
+  45% {
+    opacity: 1;
+    filter: brightness(40%);
+  }
+  60% {
+    opacity: 0;
+    filter: brightness(0%);
+  }
+}
+
+.blastoise {
+  animation: blastoise 20s forwards infinite;
+}
+
+@keyframes blastoise {
+  60% {
+    opacity: 0;
+    filter: brightness(0%);
+  }
+  75% {
+    opacity: 1;
+    filter: brightness(40%);
+  }
+  90% {
     opacity: 0;
     filter: brightness(0%);
   }

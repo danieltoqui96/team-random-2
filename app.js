@@ -182,11 +182,11 @@ const pokemonBody = (sprite, stats) => {
   const statsElement = document.createElement("div");
   statsElement.classList.add("pokemon-stats");
   statsElement.appendChild(pokemonStat("PS", stats.hp));
-  statsElement.appendChild(pokemonStat("Att", stats.attack));
-  statsElement.appendChild(pokemonStat("Def", stats.defense));
-  statsElement.appendChild(pokemonStat("S. A", stats.speAtt));
-  statsElement.appendChild(pokemonStat("S. D", stats.speDef));
-  statsElement.appendChild(pokemonStat("Spe", stats.speed));
+  statsElement.appendChild(pokemonStat("Attack", stats.attack));
+  statsElement.appendChild(pokemonStat("Defense", stats.defense));
+  statsElement.appendChild(pokemonStat("Spe. Att", stats.speAtt));
+  statsElement.appendChild(pokemonStat("Spe. Def", stats.speDef));
+  statsElement.appendChild(pokemonStat("Speed", stats.speed));
   statsElement.appendChild(pokemonStat("Total", stats.total, true));
 
   const body = document.createElement("div");
