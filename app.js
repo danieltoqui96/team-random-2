@@ -48,7 +48,7 @@ const getRandomNumbers = (min, max, length) => {
 };
 // Función para obtener seis Pokémon random
 const getRandomTeamData = async () => {
-  const ids = getRandomNumbers(1, 386, 6);
+  const ids = getRandomNumbers(1, 395, 6);
   const team = [];
   try {
     for (const id of ids) {

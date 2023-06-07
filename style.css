@@ -6,12 +6,29 @@
 
 /* Estilos generales de la página */
 body {
-  background: url(/imgs/cramorant.jpg);
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
+  background: rgb(30, 64, 175);
+  background: linear-gradient(
+    to right,
+    rgb(29, 78, 216),
+    rgb(30, 64, 175),
+    rgb(17, 24, 39)
+  );
+  background-size: 500% 500%;
+  animation: color 12s ease-in-out infinite;
   color: white;
   font-family: serif;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 header {
@@ -32,7 +49,7 @@ main {
 }
 
 button {
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to top, rgb(17, 24, 39), rgb(75, 85, 99));
   border: none;
   color: white;
   padding: 12px 28px;
@@ -42,10 +59,12 @@ button {
   margin: 10px;
   border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
 }
 
 button:active {
-  box-shadow: inset 0px -1px 5px rgba(255, 255, 255, 0.432);
+  /* box-shadow: inset 0px -1px 5px rgba(255, 255, 255, 0.432); */
+  background: linear-gradient(to bottom, rgb(17, 24, 39), rgb(75, 85, 99));
   border: none;
 }
 
@@ -57,15 +76,15 @@ section {
 
 /* Clases especificas */
 .pokemon-card {
-  height: 250px;
-  width: 400px;
+  height: 280px;
+  width: 460px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   margin: 10px;
   padding: 3px;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to right, rgb(17, 24, 39), rgb(75, 85, 99));
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
 }
 
@@ -205,22 +224,46 @@ section {
 }
 
 .color1 {
-  background: linear-gradient(rgb(255, 255, 255), #ff5733, #ff5733);
+  background: linear-gradient(to right, #ff0000, #ff4a12);
+  animation: bar 2s linear infinite;
+  background-size: 300% 300%;
 }
 .color2 {
-  background: linear-gradient(rgb(255, 255, 255), #ffbd33, #ffbd33);
+  background: linear-gradient(to right, #ff7c17, #ffac27);
+  animation: bar 2s linear infinite;
+  background-size: 300% 300%;
 }
 .color3 {
-  background: linear-gradient(rgb(255, 255, 255), #dbff33, #dbff33);
+  background: linear-gradient(to right, #ddd607, #e5ff00);
+  animation: bar 2s linear infinite;
+  background-size: 300% 300%;
 }
 .color4 {
-  background: linear-gradient(rgb(255, 255, 255), #75ff33, #75ff33);
+  background: linear-gradient(to right, #5eff00, #00ff00);
+  animation: bar 2s linear infinite;
+  background-size: 300% 300%;
 }
 .color5 {
-  background: linear-gradient(rgb(255, 255, 255), #33ff57, #33ff57);
+  background: linear-gradient(to right, #00eeff, #00aaff);
+  animation: bar 2s linear infinite;
+  background-size: 300% 300%;
 }
 .color6 {
-  background: linear-gradient(rgb(255, 255, 255), #33ffbd, #33ffbd);
+  background: linear-gradient(to right, #0059ff, #0000ff);
+  animation: bar 2s linear infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes bar {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .shiny {
@@ -232,10 +275,10 @@ section {
     rgb(161, 98, 7, 0.8)
   );
   background-size: 400% 400%;
-  animation: gradient-animation 6s ease infinite;
+  animation: shiny-card 6s ease infinite;
 }
 
-@keyframes gradient-animation {
+@keyframes shiny-card {
   0% {
     background-position: 0% 50%;
     color: black;
@@ -251,10 +294,10 @@ section {
 }
 
 .icon-shiny {
-  animation: shiny-icon-effect 6s ease infinite;
+  animation: shiny-icon 6s ease infinite;
 }
 
-@keyframes shiny-icon-effect {
+@keyframes shiny-icon {
   0% {
     filter: invert(0%);
   }
@@ -280,12 +323,13 @@ section {
   }
 }
 
-.cramorant {
-  animation: show-and-hide 10s forwards infinite;
-  width: 80%;
+.main-img {
+  animation: charizard 10s forwards infinite;
+  width: 40%;
+  margin: 100px;
 }
 
-@keyframes show-and-hide {
+@keyframes charizard {
   0% {
     opacity: 0;
     filter: brightness(0%);
