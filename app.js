@@ -150,13 +150,20 @@ const pokemonHeader = (id, name, types, shiny) => {
     return image;
   });
 
-  const div = createDiv(typeImages, "pokemon-types");
+  const div = document.createElement("div");
+  div.classList.add("pokemon-types");
   if (shiny) {
     const imgShiny = document.createElement("img");
     imgShiny.src = "./imgs/shiny.svg";
     imgShiny.classList.add("icon-shiny");
     div.appendChild(imgShiny);
   }
+
+  types.forEach((type) => {
+    const image = document.createElement("img");
+    image.src = `/imgs/type/${type}.svg`;
+    div.appendChild(image);
+  });
 
   const header = createDiv([number, nameElement, div], "pokemon-header");
   return header;
@@ -240,20 +247,18 @@ const pokemonFooter = (ability, nature, moves) => {
     [createSpan("Ability:"), createSpan(ability)],
     "pokemon-ability"
   );
-
   const natureElement = createDiv(
     [createSpan("Nature:"), createSpan(nature)],
     "pokemon-nature"
   );
-
   const details = createDiv([abilityElement, natureElement], "pokemon-details");
 
-  const moveElements = moves.map((move) => createSpan(move));
+  const label = createSpan("Moves:", "moves-label");
 
-  const movesElement = createDiv(
-    [createSpan("Moves"), ...moveElements],
-    "pokemon-moves"
-  );
+  const moveElements = moves.map((move) => createSpan(move));
+  const container = createDiv([...moveElements], "moves-container");
+
+  const movesElement = createDiv([label, container], "pokemon-moves");
 
   const footer = createDiv([details, movesElement], "pokemon-footer");
 
