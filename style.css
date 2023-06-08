@@ -196,12 +196,35 @@ section {
   text-align: center;
   font-size: 90%;
 }
-.color1,
-.color2,
-.color3,
-.color4,
-.color5,
+
+.color1 {
+  background: linear-gradient(45deg, #ff0000, #d00000, #ff4a12, #ff4a12);
+  background-size: 500% 500%;
+  animation: bar-color 2s linear infinite, bar-width 2s;
+}
+.color2 {
+  background: linear-gradient(135deg, #ff9900, #d34300, #ffac27, #ffac27);
+  background-size: 500% 500%;
+  animation: bar-color 2s linear infinite, bar-width 2s;
+}
+.color3 {
+  background: linear-gradient(270deg, #ccff00, #9ec600, #e5ff00, #e5ff00);
+  background-size: 500% 500%;
+  animation: bar-color 2s linear infinite, bar-width 2s;
+}
+.color4 {
+  background: linear-gradient(45deg, #5eff00, #00aa00, #00ff00, #00ff00);
+  background-size: 500% 500%;
+  animation: bar-color 2s linear infinite, bar-width 2s;
+}
+.color5 {
+  background: linear-gradient(135deg, #00eeff, #00a2ae, #00aaff, #00aaff);
+  background-size: 500% 500%;
+  animation: bar-color 2s linear infinite, bar-width 2s;
+}
 .color6 {
+  background: linear-gradient(270deg, #0059ff, #0000c2, #1111ff, #1111ff);
+  background-size: 500% 500%;
   animation: bar-color 2s linear infinite, bar-width 2s;
 }
 @keyframes bar-color {
@@ -215,34 +238,11 @@ section {
     background-position: 0% 50%;
   }
 }
+
 @keyframes bar-width {
   0% {
     width: 0%;
   }
-}
-.color1 {
-  background: linear-gradient(45deg, #ff0000, #d00000, #ff4a12, #ff4a12);
-  background-size: 500% 500%;
-}
-.color2 {
-  background: linear-gradient(135deg, #ff9900, #d34300, #ffac27, #ffac27);
-  background-size: 500% 500%;
-}
-.color3 {
-  background: linear-gradient(270deg, #ccff00, #9ec600, #e5ff00, #e5ff00);
-  background-size: 500% 500%;
-}
-.color4 {
-  background: linear-gradient(45deg, #5eff00, #00aa00, #00ff00, #00ff00);
-  background-size: 500% 500%;
-}
-.color5 {
-  background: linear-gradient(135deg, #00eeff, #00a2ae, #00aaff, #00aaff);
-  background-size: 500% 500%;
-}
-.color6 {
-  background: linear-gradient(270deg, #0059ff, #0000c2, #1111ff, #1111ff);
-  background-size: 500% 500%;
 }
 .shiny {
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);

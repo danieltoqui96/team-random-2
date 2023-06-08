@@ -130,43 +130,35 @@ const pokemonInfo = ({
   moves,
   shiny,
 }) => {
-  // pokemon-card
-  const article = document.createElement("article");
-  article.classList.add("pokemon-card");
-  article.appendChild(pokemonHeader(id, name, types, shiny));
-  article.appendChild(pokemonBody(sprite, stats));
-  article.appendChild(pokemonFooter(ability, nature, moves));
+  const header = pokemonHeader(id, name, types, shiny);
+  const body = pokemonBody(sprite, stats);
+  const footer = pokemonFooter(ability, nature, moves);
+
+  const article = createDiv([header, body, footer], "pokemon-card");
   if (shiny) article.classList.add("shiny");
   return article;
 };
 
 // Función que retorna el header del pokemon
 const pokemonHeader = (id, name, types, shiny) => {
-  const number = document.createElement("span");
-  number.textContent = `#${id}`;
+  const number = createSpan(`#${id}`);
+  const nameElement = createSpan(name);
 
-  const nameElement = document.createElement("span");
-  nameElement.textContent = `${name}`;
+  const typeImages = types.map((type) => {
+    const image = document.createElement("img");
+    image.src = `/imgs/type/${type}.svg`;
+    return image;
+  });
 
-  const div = document.createElement("div");
-  div.classList.add("pokemon-types");
+  const div = createDiv(typeImages, "pokemon-types");
   if (shiny) {
     const imgShiny = document.createElement("img");
     imgShiny.src = "./imgs/shiny.svg";
     imgShiny.classList.add("icon-shiny");
     div.appendChild(imgShiny);
   }
-  types.forEach((type) => {
-    const image = document.createElement("img");
-    image.src = `/imgs/type/${type}.svg`;
-    div.appendChild(image);
-  });
 
-  const header = document.createElement("div");
-  header.classList.add("pokemon-header");
-  header.appendChild(number);
-  header.appendChild(nameElement);
-  header.appendChild(div);
+  const header = createDiv([number, nameElement, div], "pokemon-header");
   return header;
 };
 
@@ -175,35 +167,29 @@ const pokemonBody = (sprite, stats) => {
   const image = document.createElement("img");
   image.src = sprite;
 
-  const imageDiv = document.createElement("div");
-  imageDiv.classList.add("pokemon-image");
-  imageDiv.appendChild(image);
+  const imageDiv = createDiv([image], "pokemon-image");
 
-  const statsElement = document.createElement("div");
-  statsElement.classList.add("pokemon-stats");
-  statsElement.appendChild(pokemonStat("PS", stats.hp));
-  statsElement.appendChild(pokemonStat("Attack", stats.attack));
-  statsElement.appendChild(pokemonStat("Defense", stats.defense));
-  statsElement.appendChild(pokemonStat("Spe. Att", stats.speAtt));
-  statsElement.appendChild(pokemonStat("Spe. Def", stats.speDef));
-  statsElement.appendChild(pokemonStat("Speed", stats.speed));
-  statsElement.appendChild(pokemonStat("Total", stats.total, true));
+  const statsElement = createDiv(
+    [
+      pokemonStat("PS", stats.hp),
+      pokemonStat("Attack", stats.attack),
+      pokemonStat("Defense", stats.defense),
+      pokemonStat("Spe. Att", stats.speAtt),
+      pokemonStat("Spe. Def", stats.speDef),
+      pokemonStat("Speed", stats.speed),
+      pokemonStat("Total", stats.total, true),
+    ],
+    "pokemon-stats"
+  );
 
-  const body = document.createElement("div");
-  body.classList.add("pokemon-body");
-  body.appendChild(imageDiv);
-  body.appendChild(statsElement);
+  const body = createDiv([imageDiv, statsElement], "pokemon-body");
+
   return body;
 };
 
 // Función que retorna el Stat del pokemon
 const pokemonStat = (stat, value, total) => {
-  const label = document.createElement("span");
-  label.classList.add("stat-label");
-  label.textContent = stat;
-
-  const barValue = document.createElement("div");
-  barValue.classList.add("stat-value");
+  const barValue = createDiv([], "stat-value");
   barValue.style.width = total
     ? `${(value / 680) * 100}%`
     : `${(value / 255) * 100}%`;
@@ -212,19 +198,17 @@ const pokemonStat = (stat, value, total) => {
     total ? colorChart(value / 680) : colorChart(value / 255)
   );
 
-  const bar = document.createElement("div");
-  bar.classList.add("stat-bar");
-  bar.appendChild(barValue);
+  const bar = createDiv([barValue], "stat-bar");
 
-  const display = document.createElement("span");
-  display.classList.add("stat-value-display");
-  display.textContent = value;
+  const container = createDiv(
+    [
+      createSpan(stat, "stat-label"),
+      bar,
+      createSpan(value, "stat-value-display"),
+    ],
+    "stat-container"
+  );
 
-  const container = document.createElement("div");
-  container.classList.add("stat-container");
-  container.appendChild(label);
-  container.appendChild(bar);
-  container.appendChild(display);
   return container;
 };
 
@@ -252,52 +236,48 @@ const colorChart = (value) => {
 
 // Función que retorna el footer del pokemon
 const pokemonFooter = (ability, nature, moves) => {
-  const abilityLabel = document.createElement("span");
-  abilityLabel.textContent = "(A):";
+  const abilityElement = createDiv(
+    [createSpan("Ability:"), createSpan(ability)],
+    "pokemon-ability"
+  );
 
-  const abilityValue = document.createElement("span");
-  abilityValue.textContent = ability;
+  const natureElement = createDiv(
+    [createSpan("Nature:"), createSpan(nature)],
+    "pokemon-nature"
+  );
 
-  const abilityDiv = document.createElement("div");
-  abilityDiv.classList.add("pokemon-ability");
-  abilityDiv.appendChild(abilityLabel);
-  abilityDiv.appendChild(abilityValue);
+  const details = createDiv([abilityElement, natureElement], "pokemon-details");
 
-  const natureLabel = document.createElement("span");
-  natureLabel.textContent = "(N):";
+  const moveElements = moves.map((move) => createSpan(move));
 
-  const natureValue = document.createElement("span");
-  natureValue.textContent = nature;
+  const movesElement = createDiv(
+    [createSpan("Moves"), ...moveElements],
+    "pokemon-moves"
+  );
 
-  const natureElement = document.createElement("div");
-  natureElement.classList.add("pokemon-nature");
-  natureElement.appendChild(natureLabel);
-  natureElement.appendChild(natureValue);
+  const footer = createDiv([details, movesElement], "pokemon-footer");
 
-  const details = document.createElement("div");
-  details.classList.add("pokemon-details");
-  details.appendChild(abilityDiv);
-  details.appendChild(natureElement);
-
-  const movesElement = document.createElement("div");
-  movesElement.classList.add("pokemon-moves");
-  movesElement.appendChild(pokemonMove(moves[0]));
-  movesElement.appendChild(pokemonMove(moves[1]));
-  movesElement.appendChild(pokemonMove(moves[2]));
-  movesElement.appendChild(pokemonMove(moves[3]));
-
-  const footer = document.createElement("div");
-  footer.classList.add("pokemon-footer");
-  footer.appendChild(details);
-  footer.appendChild(movesElement);
   return footer;
 };
 
-// Función que retorna los movimientos del pokemon
-const pokemonMove = (move) => {
-  const moveName = document.createElement("span");
-  moveName.textContent = move;
-  return moveName;
+// Función que retorna un div con sus hijos
+const createDiv = (children = [], className = null) => {
+  const div = document.createElement("div");
+  children.forEach((child) => div.appendChild(child));
+  if (className) {
+    div.classList.add(className);
+  }
+  return div;
+};
+
+// Función que retorna un span con texto
+const createSpan = (text, className = null) => {
+  const span = document.createElement("span");
+  span.textContent = text;
+  if (className) {
+    span.classList.add(className);
+  }
+  return span;
 };
 
 // Principal Funcion
