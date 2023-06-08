@@ -386,8 +386,9 @@ section {
   }
   body {
     background: #385364;
-    background: linear-gradient(#0009b6, #263640);
+    background: linear-gradient(#0cb600, #263640);
     background-attachment: fixed;
+    background-size: 100% 1000px;
   }
   .pokemon-card {
     height: 220px;
