@@ -10,16 +10,14 @@ html {
 }
 body {
   height: 100%;
-  background: #263640;
-  background: linear-gradient(#009ab6, #263640);
+  background: #12589a;
   background-attachment: fixed;
   color: white;
   font-family: serif;
 }
-
 header {
-  background: rgb(0, 0, 0, 0.1);
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  background: rgb(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
 }
 h1 {
   text-align: center;
@@ -153,16 +151,11 @@ section {
   align-items: center;
 }
 .stat-value {
-  height: 60%;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  animation: barra-animada 3s;
+  height: 55%;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
-@keyframes barra-animada {
-  0% {
-    width: 0%;
-  }
-}
+
 .stat-value-display {
   width: 15%;
   font-size: 80%;
@@ -209,9 +202,9 @@ section {
 .color4,
 .color5,
 .color6 {
-  animation: bar 10s linear infinite;
+  animation: bar-color 2s linear infinite, bar-width 2s;
 }
-@keyframes bar {
+@keyframes bar-color {
   0% {
     background-position: 0% 50%;
   }
@@ -220,6 +213,11 @@ section {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+@keyframes bar-width {
+  0% {
+    width: 0%;
   }
 }
 .color1 {
@@ -271,11 +269,9 @@ section {
     color: black;
   }
 }
-
 .icon-shiny {
   animation: shiny-icon 6s ease infinite;
 }
-
 @keyframes shiny-icon {
   0% {
     filter: invert(0%);
@@ -383,12 +379,6 @@ section {
   }
   h1 {
     padding: 18px;
-  }
-  body {
-    background: #385364;
-    background: linear-gradient(#0cb600, #263640);
-    background-attachment: fixed;
-    background-size: 100% 1000px;
   }
   .pokemon-card {
     height: 220px;
