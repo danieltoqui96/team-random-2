@@ -11,16 +11,12 @@ html {
 body {
   height: 100%;
   background: #263640;
-  background: -webkit-linear-gradient(#009ab6, #263640);
-  background: -o-linear-gradient(#009ab6, #263640);
-  background: -moz-linear-gradient(#009ab6, #263640);
   background: linear-gradient(#009ab6, #263640);
-  margin: 0px !important;
-  background-attachment: scroll;
-  background-repeat: repeat-y;
+  background-attachment: fixed;
   color: white;
   font-family: serif;
 }
+
 header {
   background: rgb(0, 0, 0, 0.1);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
@@ -387,6 +383,10 @@ section {
   }
   h1 {
     padding: 18px;
+  }
+  body {
+    background: #263640;
+    /* background: linear-gradient(#009ab6, #263640); */
   }
   .pokemon-card {
     height: 220px;
