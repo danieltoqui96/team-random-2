@@ -10,22 +10,32 @@ html {
 }
 body {
   height: 100%;
-  background: #12589a;
+  background: #400071;
   background-attachment: fixed;
   color: white;
   font-family: serif;
 }
 header {
-  background: rgb(0, 0, 0, 0.15);
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  font-family: "Anton", serif;
 }
 
-h1 {
+.title {
+  width: 70%;
   text-align: center;
-  padding: 20px;
   text-transform: uppercase;
+  font-size: 60px;
+  font-weight: bold;
+  background-image: url("./imgs/mewtwo-min.jpg");
+  background-size: cover;
+  background-position-y: center;
+  background-clip: text;
   user-select: none;
+  color: rgba(0, 0, 0, 0);
+  -webkit-background-clip: text;
 }
+
 main {
   display: flex;
   flex-flow: column nowrap;
@@ -44,7 +54,8 @@ button {
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 16px;
+  margin: 12px;
+  margin-bottom: 5px;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
@@ -77,11 +88,25 @@ section {
   border-radius: 10px;
   background: black;
   background: linear-gradient(
-    to right,
-    rgb(17, 24, 39, 0.8),
-    rgb(75, 85, 99, 0.8)
+    60deg,
+    rgb(17, 24, 39),
+    rgba(56, 74, 99),
+    rgb(17, 24, 39)
   );
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  background-size: 400% 400%;
+  animation: card 6s linear infinite;
+}
+@keyframes card {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Header */
@@ -341,7 +366,7 @@ section {
   }
   15% {
     opacity: 1;
-    filter: brightness(40%);
+    filter: brightness(80%);
   }
   30% {
     opacity: 0;
@@ -358,7 +383,7 @@ section {
   }
   45% {
     opacity: 1;
-    filter: brightness(40%);
+    filter: brightness(80%);
   }
   60% {
     opacity: 0;
@@ -375,7 +400,7 @@ section {
   }
   75% {
     opacity: 1;
-    filter: brightness(40%);
+    filter: brightness(80%);
   }
   90% {
     opacity: 0;
@@ -383,12 +408,13 @@ section {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 470px) {
   button {
     padding: 10px 24px;
   }
-  h1 {
-    padding: 18px;
+
+  .title {
+    width: 100%;
   }
   .pokemon-card {
     height: 400px;
@@ -446,5 +472,29 @@ section {
     margin: 15px;
     width: 300px;
     height: 300px;
+  }
+}
+
+@media (max-width: 460px) {
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin-top: 20px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

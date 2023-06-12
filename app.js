@@ -144,12 +144,6 @@ const pokemonHeader = (id, name, types, shiny) => {
   const number = createSpan(`#${id}`);
   const nameElement = createSpan(name);
 
-  const typeImages = types.map((type) => {
-    const image = document.createElement("img");
-    image.src = `/imgs/type/${type}.svg`;
-    return image;
-  });
-
   const div = document.createElement("div");
   div.classList.add("pokemon-types");
   if (shiny) {
@@ -288,7 +282,7 @@ const createSpan = (text, className = null) => {
 // Principal Funcion
 const getRandomTeam = async () => {
   try {
-    teamSection.innerHTML = "<p>Cargando equipo Pokémon...</p>";
+    teamSection.innerHTML = `<span class="loader"></span>`;
 
     const team = await getRandomTeamData();
     displayTeamSection(team);
