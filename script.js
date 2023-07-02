@@ -1,6 +1,62 @@
 // Variables
-const buttonTeam = document.getElementById("button-team");
 const teamSection = document.getElementById("team-section");
+const randomButton = document.getElementById("random-button");
+
+randomButton.addEventListener("click", async () => {
+  teamSection.innerHTML = `<span class="loader"></span>`;
+
+  // Obteniendo ids
+  const numbers = new Set();
+  const min = 1;
+  const max = 151;
+  while (numbers.size < 6) {
+    const number = Math.floor(Math.random() * (max - min + 1)) + min;
+    numbers.add(number);
+  }
+  const ids = Array.from(numbers);
+
+  // LLamada a api
+  const responses = await Promise.all(
+    ids.map(async (id) => {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const data = await res.json();
+
+      // probabilidad de shiny
+      const shiny = Math.random() < 0.2;
+      const sprite = shiny ? "front_shiny" : "front_default";
+
+      // objeto poke
+      const poke = {
+        id: data.id,
+        name: data.name,
+        types: data.types.map((type) => type.type.name),
+        sprite: data.sprites.other.home[sprite],
+        shiny: shiny,
+        stats: {
+          hp: data.stats[0].base_stat,
+          attack: data.stats[1].base_stat,
+          defense: data.stats[2].base_stat,
+          speAtt: data.stats[3].base_stat,
+          speDef: data.stats[4].base_stat,
+          speed: data.stats[5].base_stat,
+          total: data.stats.reduce((acc, stat) => acc + stat.base_stat, 0),
+        },
+        ability:
+          data.abilities[Math.floor(Math.random() * data.abilities.length)]
+            .ability.name,
+        nature: natures[Math.floor(Math.random() * 25)],
+        moves: getMoves(data.moves),
+      };
+
+      return poke;
+    })
+  );
+
+  displayTeamSection(responses);
+  console.log(responses);
+});
+
+// aqui
 
 const natures = [
   "Hasty",
@@ -30,8 +86,6 @@ const natures = [
   "Bashful",
 ];
 
-let count = 0;
-
 // Funtions para extraer Data de Team
 
 // Función para obtener números al azar no repetidos
@@ -49,62 +103,6 @@ const getRandomNumbers = (min, max, length) => {
   return Array.from(numbers);
 };
 
-// Función para obtener seis Pokémon random
-const getRandomTeamData = async () => {
-  console.log(`\nBuscando Team ${++count}`);
-  const ids = getRandomNumbers(1, 395, 6);
-  const team = [];
-  try {
-    for (const id of ids) {
-      const pokemon = await getPokemon(id);
-      team.push(pokemon);
-    }
-    return team;
-  } catch (error) {
-    throw new Error("Falla al obtener Team", error);
-  }
-};
-
-// Función para obtener un Pokémon dado un número
-const getPokemon = async (number) => {
-  const apiUrl = `https://pokeapi.co/api/v2/pokemon/${number}`;
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    const isShiny = chooseWithProbability(0.05);
-    const sprite = isShiny ? "front_shiny" : "front_default";
-    const pokemon = {
-      id: data.id,
-      name: data.name,
-      types: data.types.map((type) => type.type.name),
-      sprite: data.sprites.other.home[sprite],
-      stats: {
-        hp: data.stats[0].base_stat,
-        attack: data.stats[1].base_stat,
-        defense: data.stats[2].base_stat,
-        speAtt: data.stats[3].base_stat,
-        speDef: data.stats[4].base_stat,
-        speed: data.stats[5].base_stat,
-        total: data.stats.reduce((acc, stat) => acc + stat.base_stat, 0),
-      },
-      ability:
-        data.abilities[Math.floor(Math.random() * data.abilities.length)]
-          .ability.name,
-      nature: natures[Math.floor(Math.random() * 25)],
-      moves: getMoves(data.moves),
-      shiny: isShiny,
-    };
-    console.log(`Pokémon #${number}: ${pokemon.name}`);
-    return pokemon;
-  } catch (error) {
-    console.log(`Falla en Pokémon #${number}`);
-    throw new Error(`Error en llamada Pokémon #${number}`, error);
-  }
-};
-const chooseWithProbability = (probability) => {
-  return Math.random() < probability;
-};
-
 const getMoves = (arr) => {
   if (arr.length < 4) {
     return arr.map((move) => move.move.name);
@@ -118,7 +116,7 @@ const getMoves = (arr) => {
   return moves;
 };
 
-// Funtions para integrar data
+// Funciones del Dom
 
 // Función para mostrar la información del Equipo Pokémon
 const displayTeamSection = (team) => {
@@ -289,28 +287,3 @@ const createSpan = (text, className = null) => {
   }
   return span;
 };
-
-// Principal Funcion
-const getRandomTeam = async () => {
-  try {
-    teamSection.innerHTML = `<span class="loader"></span>`;
-
-    const timeout = 5000; // 10 segundos
-    const timer = setTimeout(() => {
-      throw new Error(
-        "La PokeAPI ha tardado demasiado en responder. Por favor, inténtalo de nuevo más tarde."
-      );
-    }, timeout);
-
-    const team = await getRandomTeamData();
-
-    clearTimeout(timer);
-
-    displayTeamSection(team);
-  } catch (error) {
-    teamSection.innerHTML = `<p>${error.message}</p>`;
-  }
-};
-
-// Controllers
-buttonTeam.addEventListener("click", getRandomTeam);
