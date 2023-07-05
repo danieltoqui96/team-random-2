@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Team</h1>
+    <section>
+      <div class="pokemon-card">
+        <!-- header -->
+        <div class="pokemon-header">
+          <span>#384</span>
+          <h2>Rayquaza</h2>
+          <div class="pokemon-types">
+            <img src="../img/shiny.svg" alt="Shiny Icon" />
+            <img src="../img/type/dragon.svg" alt="Dragon Type Icon" />
+            <img src="../img/type/flying.svg" alt="Flying Type Icon" />
+          </div>
+        </div>
+        <!-- Imagen y chart -->
+        <div class="pokemon-img-chart-container">
+          <!-- Imagen -->
+          <div class="pokemon-img-container">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/384.png"
+              alt="Rayquaza"
+            />
+          </div>
+          <!-- Gráfico -->
+          <div class="pokemon-chart-container">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+        <!-- Habilidad y naturaleza -->
+        <div class="pokemon-info-container">
+          <span> Habilidad: Intimidacion </span>
+          <span> Naturaleza: Modesta </span>
+        </div>
+        <!-- Ataques -->
+        <div class="pokemon-moves">
+          <!-- Ataque 1 -->
+          <div class="pokemon-move">
+            <span>Danza Dragon</span>
+            <img src="../img/move/especial.png" alt="Special Move Icon" />
+            <img src="../img/type/dragon.svg" alt="Dragon Type Icon" />
+          </div>
+          <!-- Ataque 2 -->
+          <div class="pokemon-move">
+            <span>Danza Dragon</span>
+            <img src="../img/move/especial.png" alt="Special Move Icon" />
+            <img src="../img/type/dragon.svg" alt="Dragon Type Icon" />
+          </div>
+          <!-- Ataque 3 -->
+          <div class="pokemon-move">
+            <span>Danza Dragon</span>
+            <img src="../img/move/especial.png" alt="Special Move Icon" />
+            <img src="../img/type/dragon.svg" alt="Dragon Type Icon" />
+          </div>
+          <!-- Ataque 4 -->
+          <div class="pokemon-move">
+            <span>Danza Dragon</span>
+            <img src="../img/move/especial.png" alt="Special Move Icon" />
+            <img src="../img/type/dragon.svg" alt="Dragon Type Icon" />
+          </div>
+        </div>
+      </div>
+
+      <div class="pokemon-card"></div>
+      <div class="pokemon-card"></div>
+      <div class="pokemon-card"></div>
+      <div class="pokemon-card"></div>
+      <div class="pokemon-card"></div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
