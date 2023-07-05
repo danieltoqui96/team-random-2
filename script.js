@@ -274,10 +274,10 @@ const chartjs = (canvas, stats) => {
         ],
         backgroundColor: "rgba(255, 231, 67, 0.5)",
         borderColor: "rgb(255, 231, 67, 0.5)",
-        pointRadius: 3,
+        pointRadius: 5,
         borderWidth: 1,
         pointBorderWidth: 0,
-        pointHoverRadius: 8,
+        pointHoverRadius: 10,
       },
     ],
   };
