@@ -3,7 +3,18 @@ const randomButton = document.getElementById("random-button");
 const teamSection = document.getElementById("team");
 
 randomButton.addEventListener("click", async () => {
-  teamSection.innerHTML = `<span class="loader"></span>`;
+  teamSection.innerHTML = "";
+  // Loader
+  const loaderCont = document.createElement("div");
+  const loaderImg = document.createElement("img");
+
+  loaderImg.src = "./img/ball.png";
+
+  loaderImg.classList.add("loader");
+  loaderCont.classList.add("loader-container");
+
+  loaderCont.appendChild(loaderImg);
+  teamSection.appendChild(loaderCont);
 
   // Obteniendo ids
   const numbers = new Set();
@@ -50,7 +61,6 @@ randomButton.addEventListener("click", async () => {
     })
   );
 
-  // displayTeamSection(pokeTeam);
   displayTeam(pokeTeam);
 });
 
@@ -287,7 +297,7 @@ const chartjs = (canvas, stats) => {
           },
           pointLabels: {
             font: {
-              size: 8,
+              size: 10,
             },
             color: "#f9fafb",
           },
