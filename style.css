@@ -14,8 +14,8 @@
 
 body {
   font-family: var(--body-font);
-  background-color: rgb(191, 126, 5);
-  background-image: url(./img/absol.jpg);
+  background-color: rgb(90, 90, 120);
+  background-image: url(./img/rayquaza.jpg);
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
@@ -215,8 +215,14 @@ section {
 }
 
 @media (max-width: 470px) {
-  .background-image {
-    background-image: url(./img/absol-android.jpg);
+  :root {
+    --theme-bg-color: rgba(19, 31, 83, 0.4);
+    --theme-bg-color-hover: rgba(19, 31, 83, 0.8);
+  }
+
+  body {
+    background-color: black;
+    background-image: url(./img/gastly-min.jpg);
   }
 
   h1 {
