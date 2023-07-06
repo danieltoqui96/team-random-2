@@ -276,7 +276,7 @@ const natures = [
 
 const color_font = "rgb(249, 250, 251)";
 const color_transparent = "rgba(249, 250, 251, .1)";
-const color_radar = "rgba(255, 232, 0, .8)";
+const color_radar = "rgba(255, 232, 0, .7)";
 
 // Función que genera gráfico
 const chartjs = (canvas, stats) => {
