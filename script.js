@@ -19,7 +19,7 @@ randomButton.addEventListener("click", async () => {
   // Obteniendo ids
   const numbers = new Set();
   const min = 1;
-  const max = 384;
+  const max = 386;
   while (numbers.size < 6) {
     const number = Math.floor(Math.random() * (max - min + 1)) + min;
     numbers.add(number);
