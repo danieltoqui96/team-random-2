@@ -47,7 +47,6 @@ h1 {
 }
 
 main {
-  /* background-color: aqua; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,6 +75,7 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
+  width: 100%;
   overflow: auto;
   position: relative;
 }
