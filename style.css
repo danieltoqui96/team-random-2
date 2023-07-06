@@ -37,7 +37,6 @@ header {
   align-items: center;
   width: 100%;
   box-shadow: 4px 4px 4px 4px var(--theme-bg-color);
-  height: 7vh;
 }
 
 h1 {
@@ -74,8 +73,8 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  height: 90%;
+  align-content: flex-start;
+  height: 100%;
   width: 100%;
   overflow: auto;
   position: relative;
@@ -177,7 +176,7 @@ section {
 
 .pokemon-info-container span {
   width: 49%;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 /* Estilos para movimientos */
@@ -197,22 +196,34 @@ section {
   width: 49%;
 }
 
+.pokemon-move > span {
+  flex: 1;
+  font-size: 1.2em;
+}
+.pokemon-move > img {
+  max-height: 80%;
+  margin-left: 5px;
+}
+
 .power-container {
   position: relative;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 5px;
 }
 
 .power-container img {
   animation: show-hide 3s ease infinite;
+  max-height: 80%;
 }
 
 .power-container span {
   position: absolute;
   animation: show-hide 3s ease infinite;
   animation-delay: -1.5s;
+  font-size: 1.2em;
 }
 
 .accuracy-container {
@@ -221,16 +232,19 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 5px;
 }
 
 .accuracy-container img {
   animation: show-hide 3s ease infinite;
+  max-height: 80%;
 }
 
 .accuracy-container span {
   position: absolute;
   animation: show-hide 3s ease infinite;
   animation-delay: -1.5s;
+  font-size: 1.2em;
 }
 
 @keyframes show-hide {
@@ -243,16 +257,6 @@ section {
   100% {
     opacity: 0;
   }
-}
-
-.pokemon-move img {
-  max-height: 80%;
-  margin-left: 6px;
-}
-
-.pokemon-move span {
-  flex: 1;
-  font-size: 1.3em;
 }
 
 /* Fin estilos card inicio de estilos adicionales*/
@@ -276,15 +280,15 @@ section {
 @media (max-width: 470px) {
   body {
     background-image: url(./img/rayquaza-min.jpg);
-    font-size: 8px;
+    font-size: 9px;
   }
 
   section {
-    height: 80%;
+    margin-bottom: 35px;
   }
 
   .pokemon-card {
-    height: 400px;
+    height: 380px;
     width: 300px;
   }
 
@@ -301,10 +305,12 @@ section {
 
   .pokemon-img-container {
     position: absolute;
-    top: -5px;
-    left: 0;
+    /* top: -5px; */
+    /* left: 0; */
     z-index: -10;
-    width: 25%;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
   }
 
   .pokemon-chart-container {

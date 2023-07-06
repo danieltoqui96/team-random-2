@@ -322,6 +322,7 @@ const chartjs = (canvas, stats, labels) => {
     type: "radar",
     data: data,
     options: {
+      maintainAspectRatio: false,
       scales: {
         r: {
           suggestedMin: 0,
