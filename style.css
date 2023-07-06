@@ -22,17 +22,22 @@ body {
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-size: 10px;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
 }
 
 header {
   background-color: var(--theme-bg-color);
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   box-shadow: 4px 4px 4px 4px var(--theme-bg-color);
+  height: 8vh;
 }
 
 h1 {
@@ -42,9 +47,11 @@ h1 {
 }
 
 main {
+  /* background-color: aqua; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 92vh;
 }
 
 button {
@@ -57,6 +64,7 @@ button {
   font-weight: bold;
   border-radius: 10px;
   border: solid 2px var(--theme-bg-color);
+  /* background-color: bisque; */
 }
 
 button:active {
@@ -67,6 +75,10 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  /* background-color: aqua; */
+  height: 80vh;
+  /* position: static; */
+  overflow: auto;
 }
 
 .pokemon-card {
@@ -149,7 +161,7 @@ section {
 
 .pokemon-chart-container {
   width: 49%;
-  height: 110%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -268,13 +280,8 @@ section {
   } */
 
   body {
-    background-color: white;
-    background-image: url(./img/fondo-min.jpg);
-  }
-
-  header {
-    box-shadow: none;
-    border-bottom: 2px solid var(--theme-bg-color);
+    /* background-color: white; */
+    background-image: url(./img/rayquaza-min.jpg);
   }
 
   h1 {
