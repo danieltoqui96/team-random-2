@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,7 @@
 
 :root {
   --theme-bg-color: rgba(16, 18, 27, 0.4);
-  --theme-bg-color-hover: rgba(16, 18, 27, 0.8);
+  --theme-bg-color-active: rgba(16, 18, 27, 0.8);
   --theme-color: #f9fafb;
   --body-font: "Poppins", sans-serif;
 }
@@ -24,8 +25,6 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 10px;
-  scroll-behavior: smooth;
-  overflow-y: auto;
 }
 
 header {
@@ -33,11 +32,11 @@ header {
   display: flex;
   justify-content: center;
   width: 100%;
-  border-bottom: ridge 2px var(--theme-color);
+  box-shadow: 4px 4px 4px 4px var(--theme-bg-color);
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: bold;
   color: var(--theme-color);
 }
@@ -57,17 +56,11 @@ button {
   padding: 10px 20px;
   font-weight: bold;
   border-radius: 10px;
-  border: none;
-  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5),
-    inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+  border: solid 2px var(--theme-bg-color);
 }
 
 button:active {
-  box-shadow: none;
-}
-
-button:hover {
-  background-color: var(--theme-bg-color-hover);
+  background-color: var(--theme-bg-color-active);
 }
 
 section {
@@ -88,23 +81,18 @@ section {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-
+  border: solid 2px var(--theme-bg-color);
   justify-content: space-between;
-  animation: mover 2s 1;
+  animation: show-card 2s 1;
 }
 
-@keyframes mover {
+@keyframes show-card {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
-}
-
-.pokemon-card:hover {
-  background-color: var(--theme-bg-color-hover);
 }
 
 /* Estilos header*/
@@ -197,9 +185,57 @@ section {
   width: 49%;
 }
 
+.power-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.power-container img {
+  animation: show-hide 3s ease infinite;
+}
+
+.power-container span {
+  position: absolute;
+  animation: show-hide 3s ease infinite;
+  animation-delay: -1.5s;
+}
+
+.accuracy-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accuracy-container img {
+  animation: show-hide 3s ease infinite;
+}
+
+.accuracy-container span {
+  position: absolute;
+  animation: show-hide 3s ease infinite;
+  animation-delay: -1.5s;
+}
+
+@keyframes show-hide {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .pokemon-move img {
   max-height: 80%;
-  margin-left: 2px;
+  margin-left: 6px;
 }
 
 .pokemon-move span {
@@ -218,7 +254,7 @@ section {
     filter: invert(100%);
   }
   50% {
-    filter: invert(50%);
+    filter: invert(75%);
   }
   100% {
     filter: invert(100%);
@@ -226,14 +262,19 @@ section {
 }
 
 @media (max-width: 470px) {
-  :root {
-    --theme-bg-color: rgba(19, 31, 83, 0.4);
-    --theme-bg-color-hover: rgba(19, 31, 83, 0.8);
-  }
+  /* :root {
+    --theme-bg-color: rgb(169, 67, 8, 0.5);
+    --theme-bg-color-active: rgba(169, 67, 8, 0.8);
+  } */
 
   body {
-    background-color: black;
-    background-image: url(./img/gastly-min.jpg);
+    background-color: white;
+    background-image: url(./img/fondo-min.jpg);
+  }
+
+  header {
+    box-shadow: none;
+    border-bottom: 2px solid var(--theme-bg-color);
   }
 
   h1 {
@@ -251,7 +292,6 @@ section {
 
   /* estilos imagen chart */
   .pokemon-img-chart-container {
-    display: flex;
     justify-content: center;
     height: 50%;
     position: relative;

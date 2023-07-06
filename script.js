@@ -144,17 +144,36 @@ const displayTeam = (team) => {
     poke.moves.forEach((move) => {
       const moveCont = document.createElement("div");
       const span = document.createElement("span");
-      const imgMove = document.createElement("img");
       const imgType = document.createElement("img");
+      const powerCont = document.createElement("div");
+      const powerImg = document.createElement("img");
+      const powerSpan = document.createElement("span");
+
+      const accuCont = document.createElement("div");
+      const accuImg = document.createElement("img");
+      const accuSpan = document.createElement("span");
+      // const
 
       span.textContent = move.nameEs ? move.nameEs : move.nameUs;
-      imgMove.src = `../img/move/${move.damageclass}.png`;
       imgType.src = `../img/type/${move.type}.svg`;
+      powerImg.src = `../img/move/${move.damageclass}.png`;
+      powerSpan.textContent = move.power ? move.power : "--";
+      accuImg.src = "../img/lupa.png";
+      accuSpan.textContent = move.accuracy ? move.accuracy : "--";
 
       moveCont.classList.add("pokemon-move");
+      powerCont.classList.add("power-container");
+      accuCont.classList.add("accuracy-container");
+
+      powerCont.appendChild(powerImg);
+      powerCont.appendChild(powerSpan);
+
+      accuCont.appendChild(accuImg);
+      accuCont.appendChild(accuSpan);
 
       moveCont.appendChild(span);
-      moveCont.appendChild(imgMove);
+      moveCont.appendChild(powerCont);
+      moveCont.appendChild(accuCont);
       moveCont.appendChild(imgType);
 
       moves.appendChild(moveCont);
@@ -255,6 +274,10 @@ const natures = [
   { nameUs: "Bashful", nameEs: "Tímida" },
 ];
 
+const color_font = "rgb(249, 250, 251)";
+const color_transparent = "rgba(249, 250, 251, .1)";
+const color_radar = "rgba(255, 232, 0, .8)";
+
 // Función que genera gráfico
 const chartjs = (canvas, stats) => {
   const ctx = canvas.getContext("2d");
@@ -272,12 +295,12 @@ const chartjs = (canvas, stats) => {
           stats.speDef,
           stats.speAtt,
         ],
-        backgroundColor: "rgba(255, 231, 67, 0.5)",
-        borderColor: "rgb(255, 231, 67, 0.5)",
-        pointRadius: 5,
-        borderWidth: 1,
+        backgroundColor: color_radar,
+        borderColor: color_radar,
+        pointRadius: 0,
+        borderWidth: 0,
         pointBorderWidth: 0,
-        pointHoverRadius: 10,
+        pointHoverRadius: 5,
       },
     ],
   };
@@ -292,21 +315,21 @@ const chartjs = (canvas, stats) => {
           suggestedMin: 0,
           suggestedMax: 255,
           angleLines: {
-            display: true,
-            color: "rgba(255,255,255,.1)",
+            display: false,
+            color: color_transparent,
           },
           pointLabels: {
             font: {
               size: 10,
             },
-            color: "#f9fafb",
+            color: color_font,
           },
           ticks: {
             display: false,
             stepSize: 85,
           },
           grid: {
-            color: ["#f9fafb", "rgba(255,255,255,.1)", "rgba(255,255,255,.1)"],
+            color: [color_font, color_transparent, color_transparent],
           },
         },
       },
