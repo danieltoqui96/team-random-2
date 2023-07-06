@@ -37,7 +37,7 @@ header {
   align-items: center;
   width: 100%;
   box-shadow: 4px 4px 4px 4px var(--theme-bg-color);
-  height: 8vh;
+  height: 7vh;
 }
 
 h1 {
@@ -51,11 +51,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 92vh;
+  height: 93vh;
 }
 
 button {
-  margin: 20px 0 5px 0;
+  margin: 20px 0 0 0;
   background-color: var(--theme-bg-color);
   color: var(--theme-color);
   cursor: pointer;
@@ -64,7 +64,6 @@ button {
   font-weight: bold;
   border-radius: 10px;
   border: solid 2px var(--theme-bg-color);
-  /* background-color: bisque; */
 }
 
 button:active {
@@ -72,13 +71,13 @@ button:active {
 }
 
 section {
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* background-color: aqua; */
-  height: 80vh;
-  /* position: static; */
+  height: 100%;
   overflow: auto;
+  position: relative;
 }
 
 .pokemon-card {
@@ -274,18 +273,12 @@ section {
 }
 
 @media (max-width: 470px) {
-  /* :root {
-    --theme-bg-color: rgb(169, 67, 8, 0.5);
-    --theme-bg-color-active: rgba(169, 67, 8, 0.8);
-  } */
-
   body {
-    /* background-color: white; */
     background-image: url(./img/rayquaza-min.jpg);
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 2.5em;
   }
 
   .pokemon-card {
