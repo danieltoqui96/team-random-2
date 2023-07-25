@@ -8,14 +8,11 @@ Naturaleza Aleatoria: Cada Pokémon del equipo tendrá una naturaleza aleatoria.
 Habilidad Aleatoria: Se asignará una habilidad aleatoria a cada Pokémon, en base a las habilidades que el Pókemon puede aprender.
 Ataques Aleatorios: Se asignará ataques aleatoria a cada Pokémon, en base a los ataques que el Pókemon puede aprender. 
 
-# Sitio del generador:
-https://toqui-team-random-v2.netlify.app/
-
 # Cómo usar el Generador
 Haga clic en el botón "Generar team".
+Sitio del generador: https://toqui-team-random-v2.netlify.app/
 
-
-Nota sobre Derechos de Autor
+# Nota sobre Derechos de Autor
 Es importante tener en cuenta que este proyecto es solo con fines educativos y no tiene la intención de infringir ningún derecho de autor de Nintendo, Game Freak o The Pokémon Company. Todos los derechos de los personajes y elementos de Pokémon pertenecen a sus respectivos propietarios.
 
 ¡Gracias por revisar este proyecto! Espero que disfrutes generando equipos Pokémon aleatorios con él.
