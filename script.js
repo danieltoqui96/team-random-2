@@ -33,7 +33,7 @@ randomButton.addEventListener("click", async () => {
       const data = await res.json();
 
       // probabilidad de shiny
-      const shiny = Math.random() < 0.2;
+      const shiny = Math.random() < 0.15;
       const sprite = shiny ? "front_shiny" : "front_default";
 
       // objeto pokemon
