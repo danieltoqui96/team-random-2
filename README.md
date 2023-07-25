@@ -11,6 +11,7 @@ Ataques Aleatorios: Se asignará ataques aleatoria a cada Pokémon, en base a lo
 # Cómo usar el Generador
 Haga clic en el botón "Generar team".
 Sitio del generador: https://toqui-team-random-v2.netlify.app/
+![Vista previa del equipo Pokémon](img/equipo.png)
 
 # Nota sobre Derechos de Autor
 Es importante tener en cuenta que este proyecto es solo con fines educativos y no tiene la intención de infringir ningún derecho de autor de Nintendo, Game Freak o The Pokémon Company. Todos los derechos de los personajes y elementos de Pokémon pertenecen a sus respectivos propietarios.
